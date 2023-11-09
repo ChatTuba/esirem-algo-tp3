@@ -23,4 +23,6 @@ DEBUT showsolution
 		ECRIRE "il y'a une solution" x
 	SINON SI solutiontype =TWO
 		ECRIRE "il y'a deux solution"x1 x2
+	FIN SI
+FIN showsolution
 FIN PROGRAMME

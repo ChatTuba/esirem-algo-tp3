@@ -1,5 +1,15 @@
 # esirem-algo-tp3
 
 DEBUT
-ENUME solutiontype { NONE=0, ONE=1, TWO=2};
+ENUME solutiontype  
+	NONE=0
+	ONE=1
+	TWO=2
+
+STRUCT solution 
+	PARAMETRE solutiontype.type
+	PARAMETRE ENTIER x0
+	PARAMETRE ENTIER x1	
+	PARAMETRE ENTIER x2
+	 
 FIN PROGRAMME

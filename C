@@ -47,7 +47,7 @@ void test(void) {
         printf("Pour l'équation %d :\n", i+1);
         showsolution(tab[i].solution);
         printf("\n");
-        ResolveOne(tab[i].solution);
+        //ResolveOne(tab[i].solution);
     };
     
 }
@@ -60,6 +60,6 @@ void ResolveOne (struct equation one){
 //commentaire
 int main()
 {
- test();
+    test();
     return 0;
 }

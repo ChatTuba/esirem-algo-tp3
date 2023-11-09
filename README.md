@@ -15,5 +15,12 @@ STRUCT equation
 	PARAMETRE ENTIER b
 	PARAMETRE ENTIER c
 	PARAMETRE solution.solution
-	 
+
+DEBUT showsolution
+	SI solutiontype = NONE
+		ECRIRE "il n'y a pas de solution"
+	SINON SI solutiontype = ONE 
+		ECRIRE "il y'a une solution" x
+	SINON SI solutiontype =TWO
+		ECRIRE "il y'a deux solution"x1 x2
 FIN PROGRAMME

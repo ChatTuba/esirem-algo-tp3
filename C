@@ -20,6 +20,19 @@ struct equation {
     struct solution solution;
 };
 
+int showsolution (struct solution sol)
+{
+    if (sol.type == solutiontype.NONE){
+		printf("il n'y a pas de solution");
+    }
+	else if (sol.type == solutiontype.ONE) {
+		printf( "il y'a une solution %d", x);
+	}
+	else if (sol.type == solution.TWO){
+		printf( "il y'a deux solution %d %d",x1, x2);
+	}
+}
+
 int main()
 {
 

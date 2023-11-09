@@ -49,9 +49,14 @@ void test(void) {
     };
 }
 
+void ResolveOne (struct equation one){
+    
+    one.solution.x0= -one.b/one.a;
+    printf("la solution est %d",one.solution.x0);
+}
+
 int main()
 {
  test();
     return 0;
 }
-

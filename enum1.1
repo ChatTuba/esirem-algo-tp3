@@ -6,17 +6,22 @@ enum solutiontype {
     TWO=2,   
 };
 
-struct{
+struct solution{
     enum solutiontype type;
     int x0;
     int x1;
     int x2;
 };
 
+struct equation {
+    int a;
+    int b;
+    int c;
+    struct solution solution;
+};
+
 int main()
 {
 
     return 0;
-}
-
 }

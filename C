@@ -44,14 +44,17 @@ void test(void) {
         {1, 0, 1, {NONE, 0, 0, 0}},
     };
     for (i = 0; i < 6; i++) {
-        printf("Pour l'équation %d :\n", i + 1);
+        printf("Pour l'équation %d :\n", i+1);
         showsolution(tab[i].solution);
+        printf("\n");
+        ResolveOne(tab[i].solution);
     };
+    
 }
 
 void ResolveOne (struct equation one){
     
-    one.solution.x0= -one.b/one.a;
+    one.solution.x0 = -one.b/one.a;
     printf("la solution est %d",one.solution.x0);
 }
 

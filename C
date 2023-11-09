@@ -20,21 +20,38 @@ struct equation {
     struct solution solution;
 };
 
-int showsolution (struct solution sol)
+void showsolution (struct solution sol)
 {
-    if (sol.type == solutiontype.NONE){
+    if (sol.type == NONE){
 		printf("il n'y a pas de solution");
     }
-	else if (sol.type == solutiontype.ONE) {
-		printf( "il y'a une solution %d", x);
+	else if (sol.type == ONE) {
+		printf( "il y'a une solution %d", sol.x0);
 	}
-	else if (sol.type == solution.TWO){
-		printf( "il y'a deux solution %d %d",x1, x2);
+	else if (sol.type == TWO){
+		printf( "il y'a deux solution %d %d",sol.x1, sol.x2);
 	}
+}
+
+void test(void) {
+    int i;
+    struct equation tab[6] = {
+        {1, 1 ,1, {ONE, 1, 0, 0}},
+        {1, 2, 1, {ONE, -1, 0, 0}},
+        {1, -2, 1, {TWO, 1, 1, 0}},
+        {2, -4, 2, {ONE, 1, 0, 0}},
+        {1, -1, 0, {TWO, 1, 0, 0}},
+        {1, 0, 1, {NONE, 0, 0, 0}},
+    };
+    for (i = 0; i < 6; i++) {
+        printf("Pour l'équation %d :\n", i + 1);
+        showsolution(tab[i].solution);
+    };
 }
 
 int main()
 {
-
+ test();
     return 0;
 }
+

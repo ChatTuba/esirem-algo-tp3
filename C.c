@@ -33,6 +33,13 @@ void showsolution (struct solution sol)
 	}
 }
 
+void ResolveOne (struct equation one){
+    
+    one.solution.x0 = -one.b/one.a;
+    printf("la solution est %d",one.solution.x0);
+    printf("\n");
+}
+
 void test(void) {
     int i;
     struct equation tab[6] = {
@@ -45,18 +52,13 @@ void test(void) {
     };
     for (i = 0; i < 6; i++) {
         printf("Pour l'équation %d :\n", i+1);
-        showsolution(tab[i].solution);
+        //showsolution(tab[i].solution);
         printf("\n");
-        //ResolveOne(tab[i].solution);
+        ResolveOne(tab[i]);
     };
     
 }
 
-void ResolveOne (struct equation one){
-    
-    one.solution.x0 = -one.b/one.a;
-    printf("la solution est %d",one.solution.x0);
-}
 //commentaire
 int main()
 {

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 
 enum solutiontype { 
     NONE=0,
@@ -49,7 +50,19 @@ int Delta (struct equation delt)
 
 void ResolveTwo (struct equation two)
 {
-    
+    int delta = Delta(two);
+    if (delta > 0) {
+        two.solution.x1 = (-two.b-sqrt(delta))/(2*two.a);
+        two.solution.x2 = (-two.b+sqrt(delta))/(2*two.a);
+        printf("les solutions sont %d et %d \n",two.solution.x1, two.solution.x2);
+    } 
+    if (delta = 0) {
+        two.solution.x2 = (-two.b)/(2*two.a);
+        printf("l'unique solution est %d \n",two.solution.x2);
+    } 
+    else{
+        printf("Il n y'a pas de solution réelle!");
+    }
 };
 
 void test(void) {

@@ -36,9 +36,14 @@ void showsolution (struct solution sol)
 
 void ResolveOne (struct equation one){
     
-    one.solution.x0 = -one.b/one.a;
-    printf("la solution est %d",one.solution.x0);
-    printf("\n");
+    if (one.solution.type == NONE || one.solution.type == TWO){
+        printf("ce n'est pas une équation du premier ordre!");
+    }
+    else{
+        one.solution.x0 = -one.b/one.a;
+        printf("la solution est %d",one.solution.x0);
+        printf("\n");
+    }
 }
 
 int Delta (struct equation delt)
@@ -50,18 +55,23 @@ int Delta (struct equation delt)
 
 void ResolveTwo (struct equation two)
 {
-    int delta = Delta(two);
-    if (delta > 0) {
-        two.solution.x1 = (-two.b-sqrt(delta))/(2*two.a);
-        two.solution.x2 = (-two.b+sqrt(delta))/(2*two.a);
-        printf("les solutions sont %d et %d \n",two.solution.x1, two.solution.x2);
-    } 
-    if (delta = 0) {
-        two.solution.x2 = (-two.b)/(2*two.a);
-        printf("l'unique solution est %d \n",two.solution.x2);
-    } 
+    if (two.solution.type == NONE || two.solution.type == ONE){
+        printf("ce n'est pas une équation du deuxième ordre!");
+    }
     else{
-        printf("Il n y'a pas de solution réelle!");
+        int delta = Delta(two);
+        if (delta > 0) {
+            two.solution.x1 = (-two.b-sqrt(delta))/(2*two.a);
+            two.solution.x2 = (-two.b+sqrt(delta))/(2*two.a);
+            printf("les solutions sont %d et %d \n",two.solution.x1, two.solution.x2);
+        } 
+        if (delta = 0) {
+            two.solution.x2 = (-two.b)/(2*two.a);
+            printf("l'unique solution est %d \n",two.solution.x2);
+        } 
+        else{
+            printf("Il n y'a pas de solution réelle!");
+        }
     }
 };
 
@@ -79,7 +89,7 @@ void test(void) {
         printf("Pour l'équation %d :\n", i+1);
         //showsolution(tab[i].solution); //phase de tste showsolution
         printf("\n");
-        //ResolveOne(tab[i]); //phase de test ResolveOne
+        ResolveOne(tab[i]); //phase de test ResolveOne
     };
     
 }

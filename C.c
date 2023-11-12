@@ -40,6 +40,18 @@ void ResolveOne (struct equation one){
     printf("\n");
 }
 
+int Delta (struct equation delt)
+{
+    int delta;
+    delta = (delt.b*delt.b)-4*delt.a*delt.c;
+    return delta;
+};
+
+void ResolveTwo (struct equation two)
+{
+    
+};
+
 void test(void) {
     int i;
     struct equation tab[6] = {
@@ -52,9 +64,9 @@ void test(void) {
     };
     for (i = 0; i < 6; i++) {
         printf("Pour l'équation %d :\n", i+1);
-        //showsolution(tab[i].solution);
+        //showsolution(tab[i].solution); //phase de tste showsolution
         printf("\n");
-        ResolveOne(tab[i]);
+        //ResolveOne(tab[i]); //phase de test ResolveOne
     };
     
 }

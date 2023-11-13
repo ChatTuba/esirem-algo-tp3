@@ -103,10 +103,13 @@ void decode (char *chaine){
     int b = tab[5];
     int c = tab[8];
     free(tab);
+
+    printf("a=%c \nb=%c \nc=%c",a,b,c);
 };
 
 void test(void) {
     int i;
+    char chaine[] = "2x²+6x+c";
     struct equation tab[6] = {
         {1, 1 ,1, {ONE, 1, 0, 0}},
         {1, 2, 1, {ONE, -1, 0, 0}},
@@ -123,6 +126,7 @@ void test(void) {
         //ResolveTwo(tab[i]); //phase de test ResolveTwo
         //resolve(tab[i]); //phase de test fonction central resolve
     };
+    decode(chaine);
 }
 
 //commentaire

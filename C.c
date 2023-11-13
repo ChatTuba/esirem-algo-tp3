@@ -36,7 +36,7 @@ void showsolution (struct solution sol)
 
 void ResolveOne (struct equation one){
     
-    if (one.solution.type == NONE || one.solution.type == TWO){
+    if (one.solution.type == NONE || one.solution.type == TWO){//cette vérification n'est plus utile avec la fonction resolve
         printf("ce n'est pas une équation du premier ordre!\n");
     }
     else{
@@ -55,7 +55,7 @@ int Delta (struct equation delt)
 
 void ResolveTwo (struct equation two)
 {
-    if (two.solution.type == NONE || two.solution.type == ONE){
+    if (two.solution.type == NONE || two.solution.type == ONE){ //cette vérification n'est plus utile avec la fonction resolve
         printf("ce n'est pas une équation du deuxième ordre!\n");
     }
     else{
@@ -70,8 +70,21 @@ void ResolveTwo (struct equation two)
             printf("l'unique solution est %d \n",two.solution.x2);
         } 
         else{
-            printf("Il n y'a pas de solution réelle!");
+            printf("Il n y'a pas de solution réelle!\n");
         }
+    }
+};
+
+void resolve (struct equation poly){
+
+    if (poly.solution.type == NONE){
+        printf("Il n'y a pas de solution dans R\n");
+    }
+    if(poly.solution.type == ONE){
+        ResolveOne(poly);
+    }
+    if(poly.solution.type == TWO){
+        ResolveTwo(poly);
     }
 };
 
@@ -90,9 +103,9 @@ void test(void) {
         //showsolution(tab[i].solution); //phase de tste showsolution
         printf("\n");
         //ResolveOne(tab[i]); //phase de test ResolveOne
-        ResolveTwo(tab[i]); //phase de test ResolveTwo
+        //ResolveTwo(tab[i]); //phase de test ResolveTwo
+        resolve(tab[i]); //phase de test fonction central resolve
     };
-    
 }
 
 //commentaire

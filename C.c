@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
+#include <stdlib.h>
 
 enum solutiontype { 
     NONE=0,
@@ -88,6 +90,21 @@ void resolve (struct equation poly){
     }
 };
 
+void decode (char *chaine){
+
+    char *tab = malloc(strlen(chaine)+1); // taille exacte de la chaine +1 pour /0
+     if (tab == NULL) {
+        fprintf(stderr, "erreur\n");
+        return;
+    }
+    strcpy(tab, chaine);
+
+    int a = tab[0];
+    int b = tab[5];
+    int c = tab[8];
+    free(tab);
+};
+
 void test(void) {
     int i;
     struct equation tab[6] = {
@@ -99,12 +116,12 @@ void test(void) {
         {1, 0, 1, {NONE, 0, 0, 0}},
     };
     for (i = 0; i < 6; i++) {
-        printf("Pour l'équation %d :\n", i+1);
+       // printf("Pour l'équation %d :\n", i+1);
         //showsolution(tab[i].solution); //phase de tste showsolution
-        printf("\n");
+       // printf("\n");
         //ResolveOne(tab[i]); //phase de test ResolveOne
         //ResolveTwo(tab[i]); //phase de test ResolveTwo
-        resolve(tab[i]); //phase de test fonction central resolve
+        //resolve(tab[i]); //phase de test fonction central resolve
     };
 }
 

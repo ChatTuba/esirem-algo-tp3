@@ -90,26 +90,42 @@ void resolve (struct equation poly){
     }
 };
 
-void decode (char *chaine){
+void Decode (char *chaine){
 
-    char *tab = malloc(strlen(chaine)+1); // taille exacte de la chaine +1 pour /0
-     if (tab == NULL) {
-        fprintf(stderr, "erreur\n");
-        return;
+    int compteur=0;
+    int i=0;
+    int a=0;
+    int b=0;
+    int c=0;
+
+    while (chaine[i] != 'x'){
+        if(compteur == i){
+            a=chaine[i] - '0';// le '0' sert à transformer le car en int
+        }
+        else{
+            a=a*10+(chaine[i]- '0');
+        }
+        i++;
     }
-    strcpy(tab, chaine);
-
-    int a = tab[0];
-    int b = tab[5];
-    int c = tab[8];
-    free(tab);
-
-    printf("a=%c \nb=%c \nc=%c",a,b,c);
-};
+    compteur = i+3;//+1 pour le "²+"
+    i = i+3;
+    while (chaine[i] != 'x'){
+        if(compteur == i+3){
+            b=chaine[i] - '0';// le '0' sert à transformer le car en int
+        }
+        else{
+            b=b*10+(chaine[i] - '0');
+        }
+        i++;
+    }
+    printf("a=%d\n",a);  
+    printf("b=%d\n",b);      
+}
 
 void test(void) {
     int i;
-    char chaine[] = "2x²+6x+c";
+    int a,b,c;
+    char chaine[] = "8x²+6x+9";
     struct equation tab[6] = {
         {1, 1 ,1, {ONE, 1, 0, 0}},
         {1, 2, 1, {ONE, -1, 0, 0}},
@@ -120,13 +136,13 @@ void test(void) {
     };
     for (i = 0; i < 6; i++) {
        // printf("Pour l'équation %d :\n", i+1);
-        //showsolution(tab[i].solution); //phase de tste showsolution
+        //showsolution(tab[i].solution); //phase de test showsolution
        // printf("\n");
         //ResolveOne(tab[i]); //phase de test ResolveOne
         //ResolveTwo(tab[i]); //phase de test ResolveTwo
         //resolve(tab[i]); //phase de test fonction central resolve
     };
-    decode(chaine);
+    Decode(chaine);
 }
 
 //commentaire

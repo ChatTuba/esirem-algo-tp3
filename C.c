@@ -114,7 +114,7 @@ void Decode(char *chaine) {
 
     if (chaine[0] == '-'){
         signe_a = 1; //signe passe à 1 pour les negatifs
-        chaine[0] == 0;
+        supprimerCaractere(chaine,0);
     }
 
     while (chaine[i] != 'x' && chaine[i] != '\0') {
@@ -128,26 +128,50 @@ void Decode(char *chaine) {
         i++; 
     }
     if (chaine[i] == '^' && chaine[i + 1] == '2'){
-    i = i + 3;
+        if (chaine[i+2] == '-'){
+            i = i + 2;
+        }
+        else{
+            i = i+3;
+        }
     }
 
     while (chaine[i] != 'x' && chaine[i] != '\0') {
+        if (chaine[i] == '-'){
+            signe_b = 1; //signe passe à 1 pour les negatifs
+            supprimerCaractere(chaine,i);
+        }
         b = b * 10 + (chaine[i] - '0');
         printf("%c\n",chaine[i]);
         i++;
     }
 
     if (chaine[i] == 'x') {
-        i = i+2; 
+        if (chaine[i+1] == '-'){
+            i = i + 1;
+        }
+        else{
+            i = i+2;
+        } 
     }
 
     while (chaine[i] != '\0') {
+        if (chaine[i] == '-'){
+            signe_c = 1; //signe passe à 1 pour les negatifs
+            supprimerCaractere(chaine,i);
+        }
         c = c * 10 + (chaine[i] - '0');
         printf("%c\n",chaine[i]);
         i++;
     }
     if (signe_a == 1){
         a = a*(-1);
+    }
+    if(signe_b == 1){
+        b =b*(-1);
+    }
+    if (signe_c == 1){
+        c = c*(-1);
     }
     printf("a=%d\n", a);
     printf("b=%d\n", b);
@@ -163,7 +187,7 @@ void Decode(char *chaine) {
 void test(void) {
     int i;
     int a,b,c;
-    char chaine[] = "1x^2+10x+1";
+    char chaine[] = "-1x^2+10x+1";
     struct equation tab[6] = {
         {1, 1 ,1, {ONE, 1, 0, 0}},
         {1, 2, 1, {ONE, -1, 0, 0}},

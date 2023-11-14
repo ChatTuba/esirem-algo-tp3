@@ -105,13 +105,23 @@ void supprimerCaractere(char chaine[], int position) {
 
 void Decode(char *chaine) {
     int i = 0;
+    int j = 0;
     int a = 0;
     int b = 0;
     int c = 0;
     int signe_a = 0;
     int signe_b = 0;
     int signe_c = 0;
+    int longeur = 0;
 
+    //suppr les espaces 
+    longeur = strlen(chaine);
+    for (j=0;j<longeur;j++){
+        if (chaine[j] == ' '){
+            supprimerCaractere(chaine,j);
+        }
+    }
+    
     if (chaine[0] == '-'){
         signe_a = 1; //signe passe à 1 pour les negatifs
         supprimerCaractere(chaine,0);
@@ -191,7 +201,7 @@ void Decode(char *chaine) {
 void test(void) {
     int i;
     int a,b,c;
-    char chaine[] = "-1x^2+10x+0";
+    char chaine[] = "1 x ^2 +1 0x +0";
     struct equation tab[6] = {
         {1, 1 ,1, {ONE, 1, 0, 0}},
         {1, 2, 1, {ONE, -1, 0, 0}},

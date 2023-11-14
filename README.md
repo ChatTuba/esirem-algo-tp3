@@ -36,3 +36,10 @@ Resolve fonction centrale:
 
 <img width="362" alt="image" src="https://github.com/ChatTuba/esirem-algo-tp3/assets/104895734/48b58ef0-6d70-4834-b881-2dbf5def0ce8">
 
+
+Decode chaine forme ax²+bx+c:
+
+
+<img width="342" alt="image" src="https://github.com/ChatTuba/esirem-algo-tp3/assets/104895734/f9aceaf3-756a-4261-9858-e739921e18bf">
+
+

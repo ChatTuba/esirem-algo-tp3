@@ -178,8 +178,12 @@ void Decode(char *chaine) {
     printf("c=%d\n", c);
     printf("i=%d\n", i);
 
-    if (a !=0 && b!=0 && c!=0){
+    if (c!=0){
         struct equation coef = {a,b,c,{TWO}};
+        resolve(coef);
+    }
+    if (c==0){
+        struct equation coef ={a,b,c,{ONE}};
         resolve(coef);
     }
 } 
@@ -187,7 +191,7 @@ void Decode(char *chaine) {
 void test(void) {
     int i;
     int a,b,c;
-    char chaine[] = "-1x^2+10x+1";
+    char chaine[] = "-1x^2+10x+0";
     struct equation tab[6] = {
         {1, 1 ,1, {ONE, 1, 0, 0}},
         {1, 2, 1, {ONE, -1, 0, 0}},

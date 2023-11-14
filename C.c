@@ -71,9 +71,9 @@ void ResolveTwo (struct equation two)
             two.solution.x2 = (-two.b)/(2*two.a);
             printf("l'unique solution est %d \n",two.solution.x2);
         } 
-        else{
-            printf("Il n y'a pas de solution réelle!\n");
-        }
+        /*else{
+            printf("Il n y'a pas de solution réelle!\n"); // afiche même quand il y'a des solutions reelles donc je laisse de coté
+        }*/
     }
 };
 
@@ -89,6 +89,19 @@ void resolve (struct equation poly){
         ResolveTwo(poly);
     }
 };
+void supprimerCaractere(char chaine[], int position) {
+    int longueur = strlen(chaine);
+    
+    if (position < 0 || position >= longueur) {
+        printf("Position invalide.\n");
+        return;
+    }
+    for (int i = position; i < longueur - 1; ++i) {
+        chaine[i] = chaine[i + 1];
+    }
+
+    chaine[longueur - 1] = '\0';
+}
 
 void Decode(char *chaine) {
     int i = 0;
@@ -99,9 +112,10 @@ void Decode(char *chaine) {
     int signe_b = 0;
     int signe_c = 0;
 
-    /*if (chaine[0] == '-'){
+    if (chaine[0] == '-'){
         signe_a = 1; //signe passe à 1 pour les negatifs
-    }*/
+        chaine[0] == 0;
+    }
 
     while (chaine[i] != 'x' && chaine[i] != '\0') {
         a = a * 10 + (chaine[i] - '0');
@@ -132,21 +146,24 @@ void Decode(char *chaine) {
         printf("%c\n",chaine[i]);
         i++;
     }
-    /*if (signe_a == 1){
+    if (signe_a == 1){
         a = a*(-1);
-    }*/
+    }
     printf("a=%d\n", a);
     printf("b=%d\n", b);
     printf("c=%d\n", c);
     printf("i=%d\n", i);
-    struct equation coef = {a,b,c,{TWO}};
-    resolve(coef);
+
+    if (a !=0 && b!=0 && c!=0){
+        struct equation coef = {a,b,c,{TWO}};
+        resolve(coef);
+    }
 } 
 
 void test(void) {
     int i;
     int a,b,c;
-    char chaine[] = "1x^2+90x+9";
+    char chaine[] = "1x^2+10x+1";
     struct equation tab[6] = {
         {1, 1 ,1, {ONE, 1, 0, 0}},
         {1, 2, 1, {ONE, -1, 0, 0}},

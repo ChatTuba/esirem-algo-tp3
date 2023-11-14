@@ -90,42 +90,67 @@ void resolve (struct equation poly){
     }
 };
 
-void Decode (char *chaine){
+void Decode(char *chaine) {
+    int i = 0;
+    int a = 0;
+    int b = 0;
+    int c = 0;
 
-    int compteur=0;
-    int i=0;
-    int a=0;
-    int b=0;
-    int c=0;
-
-    while (chaine[i] != 'x'){
-        if(compteur == i){
-            a=chaine[i] - '0';// le '0' sert à transformer le car en int
-        }
-        else{
-            a=a*10+(chaine[i]- '0');
-        }
+    while (chaine[i] != 'x' && chaine[i] != '\0') {
+        a = a * 10 + (chaine[i] - '0');
         i++;
     }
-    compteur = i+3;//+1 pour le "²+"
-    i = i+3;
-    while (chaine[i] != 'x'){
-        if(compteur == i+3){
-            b=chaine[i] - '0';// le '0' sert à transformer le car en int
-        }
-        else{
-            b=b*10+(chaine[i] - '0');
-        }
+    printf("a=%d\n", a);
+    printf("b=%d\n", b);
+    printf("c=%d\n", c);
+    printf("i=%d\n", i);
+
+
+    if (chaine[i] == 'x') {
+        i++; // Avance au prochain caractère après 'x'
+    }
+    if (chaine[i] == '^' && chaine[i + 1] == '2'){
+    i = i + 2;
+    }
+
+    while (chaine[i] != 'x' && chaine[i] != '\0') {
+        b = b * 10 + (chaine[i] - '0');
         i++;
     }
-    printf("a=%d\n",a);  
-    printf("b=%d\n",b);      
-}
+
+    if (chaine[i] == 'x') {
+        i++; // Avance au prochain caractère après 'x'
+    }
+    if (chaine[i] == '^' && chaine[i + 1] == '2'){
+        i = i + 2;
+    }
+    printf("a=%d\n", a);
+    printf("b=%d\n", b);
+    printf("c=%d\n", c);
+    printf("i=%d\n", i);
+
+    if (chaine[i] == 'x') {
+        i++; // Avance au prochain caractère après 'x'
+    }
+        if (chaine[i] == '^' && chaine[i+1] == '2'){
+        i=i+2;
+    }
+
+
+    while (chaine[i] != '\0') {
+        c = c * 10 + (chaine[i] - '0');
+        i++;
+    }
+    printf("a=%d\n", a);
+    printf("b=%d\n", b);
+    printf("c=%d\n", c);
+    printf("i=%d\n", i);
+} 
 
 void test(void) {
     int i;
     int a,b,c;
-    char chaine[] = "8x²+6x+9";
+    char chaine[] = "8x²+9x+9";
     struct equation tab[6] = {
         {1, 1 ,1, {ONE, 1, 0, 0}},
         {1, 2, 1, {ONE, -1, 0, 0}},

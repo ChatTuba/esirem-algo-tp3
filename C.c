@@ -107,7 +107,7 @@ void Decode(char *chaine) {
 
 
     if (chaine[i] == 'x') {
-        i++; // Avance au prochain caractère après 'x'
+        i++; 
     }
     if (chaine[i] == '^' && chaine[i + 1] == '2'){
     i = i + 2;
@@ -119,7 +119,7 @@ void Decode(char *chaine) {
     }
 
     if (chaine[i] == 'x') {
-        i++; // Avance au prochain caractère après 'x'
+        i++; 
     }
     if (chaine[i] == '^' && chaine[i + 1] == '2'){
         i = i + 2;
@@ -130,7 +130,7 @@ void Decode(char *chaine) {
     printf("i=%d\n", i);
 
     if (chaine[i] == 'x') {
-        i++; // Avance au prochain caractère après 'x'
+        i++; 
     }
         if (chaine[i] == '^' && chaine[i+1] == '2'){
         i=i+2;

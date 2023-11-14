@@ -110,9 +110,11 @@ void Decode(char *chaine) {
     int a = 0;
     int b = 0;
     int c = 0;
+    int r = 0;
     int signe_a = 0;
     int signe_b = 0;
     int signe_c = 0;
+    int signe_r = 0;
     int longeur = 0;
 
     //suppr les espaces 
@@ -169,15 +171,28 @@ void Decode(char *chaine) {
         } 
     }
 
-    while (chaine[i] != '\0') {
+    while (chaine[i] != '\0' && chaine[i] != '=') {
         if (chaine[i] == '-'){
             signe_c = 1; //signe passe à 1 pour les negatifs
             supprimerCaractere(chaine,i);
         }
         c = c * 10 + (chaine[i] - '0');
-        printf("%c\n",chaine[i]);
+        //printf("%c\n",chaine[i]);
         i++;
     }
+    if (chaine[i] == "="){
+        i++;
+        while (chaine[i] != '\0'){
+            if (chaine[i] == '-'){
+                signe_r = 1; //signe passe à 1 pour les negatifs
+                supprimerCaractere(chaine,i);
+        }
+        r = r * 10 + (chaine[i] - '0');
+        //printf("%c\n",chaine[i]);
+        i++;
+        }
+    }
+    
     if (signe_a == 1){
         a = a*(-1);
     }
@@ -187,6 +202,10 @@ void Decode(char *chaine) {
     if (signe_c == 1){
         c = c*(-1);
     }
+    if (signe_r == 1){
+        r = r*(-1);
+    }
+    c = c - r;
     printf("a=%d\n", a);
     printf("b=%d\n", b);
     printf("c=%d\n", c);
@@ -205,7 +224,7 @@ void Decode(char *chaine) {
 void test(void) {
     int i;
     int a,b,c;
-    char chaine[] = "1    x ^  2+  1 0 x +0";
+    char chaine[] = "1    x ^  2+  1 0 x +5=5";
     struct equation tab[6] = {
         {1, 1 ,1, {ONE, 1, 0, 0}},
         {1, 2, 1, {ONE, -1, 0, 0}},

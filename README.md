@@ -24,3 +24,8 @@ ResolveOne:
 
 <img width="420" alt="image" src="https://github.com/ChatTuba/esirem-algo-tp3/assets/104895734/b94fd2f0-d4db-4bcb-9260-51153cc5131a">
 
+
+ResolveTwo:
+
+
+<img width="554" alt="image" src="https://github.com/ChatTuba/esirem-algo-tp3/assets/104895734/4b928cf8-2601-460e-bfe2-2b8c1023af1f">

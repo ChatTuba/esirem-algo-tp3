@@ -95,9 +95,17 @@ void Decode(char *chaine) {
     int a = 0;
     int b = 0;
     int c = 0;
+    int signe_a = 0;
+    int signe_b = 0;
+    int signe_c = 0;
+
+    /*if (chaine[0] == '-'){
+        signe_a = 1; //signe passe à 1 pour les negatifs
+    }*/
 
     while (chaine[i] != 'x' && chaine[i] != '\0') {
         a = a * 10 + (chaine[i] - '0');
+        printf("%c\n",chaine[i]);
         i++;
     }
 
@@ -111,6 +119,7 @@ void Decode(char *chaine) {
 
     while (chaine[i] != 'x' && chaine[i] != '\0') {
         b = b * 10 + (chaine[i] - '0');
+        printf("%c\n",chaine[i]);
         i++;
     }
 
@@ -120,18 +129,24 @@ void Decode(char *chaine) {
 
     while (chaine[i] != '\0') {
         c = c * 10 + (chaine[i] - '0');
+        printf("%c\n",chaine[i]);
         i++;
     }
+    /*if (signe_a == 1){
+        a = a*(-1);
+    }*/
     printf("a=%d\n", a);
     printf("b=%d\n", b);
     printf("c=%d\n", c);
     printf("i=%d\n", i);
+    struct equation coef = {a,b,c,{TWO}};
+    resolve(coef);
 } 
 
 void test(void) {
     int i;
     int a,b,c;
-    char chaine[] = "8x^2+9x+9";
+    char chaine[] = "1x^2+90x+9";
     struct equation tab[6] = {
         {1, 1 ,1, {ONE, 1, 0, 0}},
         {1, 2, 1, {ONE, -1, 0, 0}},

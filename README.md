@@ -29,3 +29,10 @@ ResolveTwo:
 
 
 <img width="554" alt="image" src="https://github.com/ChatTuba/esirem-algo-tp3/assets/104895734/4b928cf8-2601-460e-bfe2-2b8c1023af1f">
+
+
+Resolve fonction centrale:
+
+
+<img width="362" alt="image" src="https://github.com/ChatTuba/esirem-algo-tp3/assets/104895734/48b58ef0-6d70-4834-b881-2dbf5def0ce8">
+
